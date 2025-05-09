@@ -32,7 +32,9 @@ let acc = 0;
 
 //When a button gets pressed
     //if it is an operator
-        //determine if evaluation is needed (first and second are both set+ set both to false)
+        //if there is a value in the acc
+        //place into appropriate variable
+        //determine if evaluation is needed (first and second are both set+ set both to false afterwards)
             //move result to first
         //replace operator with new operator (except =)
     //if it is a number

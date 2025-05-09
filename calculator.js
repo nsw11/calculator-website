@@ -19,4 +19,28 @@ function div(num,denom)
     {
         console.log("ERROR: Cannot divide by zero")
     }
+    return num/denom;
 }
+
+let first = 0;
+let second = 0;
+let operator = "";
+let firstSet = false;
+let secondSet = false;
+let acc = 0;
+
+
+//When a button gets pressed
+    //if it is an operator
+        //determine if evaluation is needed (first and second are both set+ set both to false)
+            //move result to first
+        //replace operator with new operator (except =)
+    //if it is a number
+        //multiply acc by 10
+        //add the new number
+    //if clear
+        //first= second = 0
+        //operator = ""
+        //firstSet = secondSet = false;
+        //acc = 0
+

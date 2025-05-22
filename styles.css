@@ -1,0 +1,34 @@
+.calculator
+{
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100px;
+    height: 100px;
+}
+
+.display
+{
+    background-color: white;
+    padding: 4px;
+    border: 1px;
+    border-color: black;
+}
+
+.row
+{
+    display: flex;
+    flex-direction: row;
+}
+
+button
+{
+    background-color: grey;
+    flex-grow: 1;
+}
+
+#zero
+{
+    flex-grow: 4;
+}

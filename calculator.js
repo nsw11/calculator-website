@@ -29,6 +29,30 @@ let firstSet = false;
 let secondSet = false;
 let acc = 0;
 
+function evaluate(op,num,denom)
+{
+    if (op == "+")
+    {
+        return add(num,denom);
+    }
+    else if (op == "-")
+    {
+        return sub(num,denom);      
+    }
+    else if (op == "x")
+    {
+        return mult(num,denom);
+    }
+    else if (op == "/")
+    {
+        return div(num,denom);    
+    }    
+    else
+    {
+        console.log("ERROR: INVALID INPUT")
+    }
+}
+
 
 //When a button gets pressed
     //if it is an operator

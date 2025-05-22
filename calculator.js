@@ -85,10 +85,54 @@ function text2number(value)
 }
 
 //TODO
+function updateDisplay(value)
+{
+    //get the display element
+    //update element value
+}
+
+//TODO
 function buttonClicked(event)
 {
     console.log("A button has been pressed");
     console.log(event.target.classList.value);
+    console.log(event.target.id);
+    
+    if(event.target.classList.value == "operator")
+    {
+        //operator Case
+        //if op == "" and operator is == "="
+            //do nothing
+        //else if op == ""
+            //set operator
+            //set first_set == True
+            //replace first with acc if you need to use acc
+        //else if operator != "="
+            //first = evaluate(op,first,second)
+            //use_acc= False
+            //first_set = True
+            //second = 0
+            //op = operation
+            //update_display
+        //else
+            // acc = eval(op,first,second)
+            // update_display
+            //first_set = False
+            // first = second= 0
+            //use_acc = True
+            //op = ""
+        
+    }
+    else // number case
+    {
+        // number case
+        // convert number
+        //determine if value should go in first or second register
+        //update register
+        //update display
+    }
+
+
     return
 }
 

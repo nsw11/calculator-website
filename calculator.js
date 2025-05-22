@@ -1,3 +1,13 @@
+//Global Variables
+let first = 0; //First Operand
+let second = 0;//Second Operand
+let operator = ""; //Operation to perform
+let firstSet = false; //determines if an incoming number goes to 1st or 2nd operand
+let useAcc = false; //determines if the acc should be used in lieu of the first operand
+let acc = 0; //accumulator
+
+
+// Arithmetic Functions (+,-,x,/) and the evaluate function that parses and controls which one is used
 function add(num,denom)
 {
     return num + denom;
@@ -21,13 +31,6 @@ function div(num,denom)
     }
     return num/denom;
 }
-
-let first = 0;
-let second = 0;
-let operator = "";
-let firstSet = false;
-let secondSet = false;
-let acc = 0;
 
 function evaluate(op,num,denom)
 {
@@ -53,20 +56,43 @@ function evaluate(op,num,denom)
     }
 }
 
+function text2number(value)
+{
+    switch(value)
+    {
+        case "zero":
+            return 0
+        case "one":
+            return 1
+        case "two":
+            return 2
+        case "three":
+            return 3
+        case "four":
+            return 4
+        case "five":
+            return 5
+        case "six":
+            return 6
+        case "seven":
+            return 7
+        case "eight":
+            return 8
+        case "nine":
+            return 9
+    }
+    return -1
+}
 
-//When a button gets pressed
-    //if it is an operator
-        //if there is a value in the acc
-        //place into appropriate variable
-        //determine if evaluation is needed (first and second are both set+ set both to false afterwards)
-            //move result to first
-        //replace operator with new operator (except =)
-    //if it is a number
-        //multiply acc by 10
-        //add the new number
-    //if clear
-        //first= second = 0
-        //operator = ""
-        //firstSet = secondSet = false;
-        //acc = 0
+//TODO
+function buttonClicked(event)
+{
+    console.log("A button has been pressed");
+    console.log(event.target.classList.value);
+    return
+}
 
+
+
+let calcElem = document.querySelector(".calculator");
+calcElem.addEventListener('click',buttonClicked);

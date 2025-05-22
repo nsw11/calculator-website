@@ -1,8 +1,9 @@
 //Global Variables
 let first = 0; //First Operand
 let second = 0;//Second Operand
-let operator = ""; //Operation to perform
+let op = ""; //Operation to perform
 let firstSet = false; //determines if an incoming number goes to 1st or 2nd operand
+let secondStart = false;
 let useAcc = false; //determines if the acc should be used in lieu of the first operand
 let acc = 0; //accumulator
 
@@ -88,7 +89,9 @@ function text2number(value)
 function updateDisplay(value)
 {
     //get the display element
+    display = document.querySelector(".display");
     //update element value
+    display.textContent = value;
 }
 
 //TODO
@@ -97,41 +100,87 @@ function buttonClicked(event)
     console.log("A button has been pressed");
     console.log(event.target.classList.value);
     console.log(event.target.id);
-    
     if(event.target.classList.value == "operator")
     {
         //operator Case
         //if op == "" and operator is == "="
+        if (event.target.id == "=" && op=="" || first==0) // CASE: = pressed without full expression
+        {
             //do nothing
+        } 
         //else if op == ""
+        else if (op=="") // CASE: first number complete, set operator and move to 2nd number
+        {
             //set operator
+            op = event.target.id;
             //set first_set == True
+            firstSet = true;
             //replace first with acc if you need to use acc
+            if (useAcc)
+            {
+                first = acc;
+            }
+        }
+            
         //else if operator != "="
+        else if  (event.target.id != "=") //CASE: all fields filled, but expression not complete-> run current calculation and reduce to allow taking in more numbers
+        {
             //first = evaluate(op,first,second)
             //use_acc= False
             //first_set = True
             //second = 0
             //op = operation
             //update_display
-        //else
+            first = evaluate(op,first,second);
+            useAcc= false;
+            firstSet = true;
+            second = 0;
+            op = event.target.id;
+            secondStart = false;
+            updateDisplay(first);
+        }
+        else if (secondStart)// CASE "=" pressed, finish calculation and reset
+        {
+            //else
             // acc = eval(op,first,second)
             // update_display
             //first_set = False
             // first = second= 0
             //use_acc = True
             //op = ""
+
+            acc = evaluate(op,first,second);
+            updateDisplay(acc);
+            firstSet = false;
+            first = second = 0;
+            useAcc = true;
+            op = ""
+            secondStart = false;
+
+        }
+
         
     }
     else // number case
     {
         // number case
         // convert number
+        let convert = text2number(event.target.id);
         //determine if value should go in first or second register
-        //update register
+        if (!firstSet)
+        {
+            first = (first *10) + convert;
+            useAcc = false;
+            updateDisplay(first);
+        }
+        else
+        {
+            second = (second *10) + convert;
+            updateDisplay(second);
+            secondStart = true;
+        }
         //update display
     }
-
 
     return
 }

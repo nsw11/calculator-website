@@ -115,7 +115,7 @@ function buttonClicked(event)
     {
         //operator Case
         //if op == "" and operator is == "="
-        if (event.target.id == "=" && op=="" || first==0) // CASE: = pressed without full expression
+        if (event.target.id == "=" && op=="" || first==0 && !firstSet) // CASE: = pressed without full expression
         {
             //do nothing
         } 

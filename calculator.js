@@ -8,6 +8,14 @@ let useAcc = false; //determines if the acc should be used in lieu of the first 
 let acc = 0; //accumulator
 
 
+function reset()
+{
+    first = second = acc = 0;
+    op = "";
+    firstSet = secondStart = useAcc = false;
+    updateDisplay(0);
+}
+
 // Arithmetic Functions (+,-,x,/) and the evaluate function that parses and controls which one is used
 function add(num,denom)
 {
@@ -26,10 +34,7 @@ function mult(num,denom)
 
 function div(num,denom)
 {
-    if (denom == 0)
-    {
-        console.log("ERROR: Cannot divide by zero")
-    }
+
     return num/denom;
 }
 
@@ -49,6 +54,11 @@ function evaluate(op,num,denom)
     }
     else if (op == "/")
     {
+        if (denom == 0)
+            {
+                console.log("ERROR CANNOT DIVIDE BY 0");
+                return num;
+            }
         return div(num,denom);    
     }    
     else
@@ -97,10 +107,11 @@ function updateDisplay(value)
 //TODO
 function buttonClicked(event)
 {
-    console.log("A button has been pressed");
-    console.log(event.target.classList.value);
-    console.log(event.target.id);
-    if(event.target.classList.value == "operator")
+    if (event.target.classList.value =="clear")
+    {
+        reset();
+    }
+    else if(event.target.classList.value == "operator")
     {
         //operator Case
         //if op == "" and operator is == "="
@@ -184,8 +195,6 @@ function buttonClicked(event)
 
     return
 }
-
-
 
 let calcElem = document.querySelector(".calculator");
 calcElem.addEventListener('click',buttonClicked);

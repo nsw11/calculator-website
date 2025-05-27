@@ -95,7 +95,35 @@ function text2number(value)
     return -1
 }
 
-//TODO
+function number2text(value)
+{
+    switch(value)
+    {
+        case "0":
+            return "zero"
+        case "1":
+            return "one"
+        case "2":
+            return "two"
+        case "3":
+            return "three"
+        case "4":
+            return "four"
+        case "5":
+            return "five"
+        case "6":
+            return "six"
+        case "7":
+            return "seven"
+        case "8":
+            return "eight"
+        case "9":
+            return "nine"
+    }
+    return -1
+}
+
+
 function updateDisplay(value)
 {
     //get the display element
@@ -104,9 +132,9 @@ function updateDisplay(value)
     display.textContent = value;
 }
 
-//TODO
 function buttonClicked(event)
 {
+    console.log(event.target.id);
     if (event.target.classList.value =="clear")
     {
         reset();
@@ -190,7 +218,6 @@ function buttonClicked(event)
             updateDisplay(second);
             secondStart = true;
         }
-        //update display
     }
 
     return
@@ -198,3 +225,16 @@ function buttonClicked(event)
 
 let calcElem = document.querySelector(".calculator");
 calcElem.addEventListener('click',buttonClicked);
+let bodyElem = document.querySelector("body");
+bodyElem.addEventListener('keydown',(e)=>
+{
+    if (e.key == "x"||e.key == "-" ||e.key == "/"||e.key == "+" || e.key == "=")
+    {
+        document.getElementById(e.key).click();
+    }
+    else if (!isNaN(e.key)) //if it is a number
+    {
+        document.getElementById(number2text(e.key)).click();
+    }
+}
+)
